@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">
+    <text class="title-date">
+      <text class="title-day">{{day}}</text>
+      <text class="title-month">{{month}}</text>
+    </text>
+    <text class="title-logo">知乎日报</text>
+    <image class="user-logo" mode="{{item.mode}}" src="{{src}}"></image>
+  </view>
+  <view class="swiper-container">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="id">
+        <swiper-item bindtap="clickSwiper" data-item="{{item}}">
+          <view class="swiper-item">
+            <view class="swiper-item-title">{{item.title}}</view>
+            <view class="swiper-item-author">作者 / {{item.author}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
