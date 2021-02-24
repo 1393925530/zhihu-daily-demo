@@ -28,8 +28,8 @@ Page({
     indicatorDots: true,
     vertical: false,
     autoplay: true,
-    interval: 2000,
-    duration: 500
+    interval: 3000,
+    duration: 800
   },
   // 事件处理函数
   bindViewTap() {
