@@ -1,0 +1,9 @@
+<view class="list-container" bindtap='clickList'>
+  <view class="list">
+    <view class="word-container">
+      <view class="title">{{content.title}}</view>
+      <view style="font-size: 12px">{{content.author}}</view>
+    </view>
+    <image class="image" src="{{content.src}}"></image>
+  </view>
+</view>

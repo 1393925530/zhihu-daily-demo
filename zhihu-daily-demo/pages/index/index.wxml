@@ -22,6 +22,8 @@
         </block>
       </swiper>
     </view>
-    <view class="list-container"></view>
+    <view class="list-container">
+      <list data-item="{{listArr[0]}}" content="{{listArr[0]}}" bind:click="clickList"></list>
+    </view>
   </view>
 </view>
