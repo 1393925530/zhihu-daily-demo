@@ -12,16 +12,19 @@ Page({
       {
         id: 1,
         title: 'demo-text-1',
+        src: 'https://pic3.zhimg.com/v2-9d2c56565ccc2ea219fcc14379ba97ff.jpg?source=8673f162',
         author: '某某1'
       },
       {
         id: 2,
         title: 'demo-text-2',
+        src: 'https://pic1.zhimg.com/v2-08a554be129bbb95a51250e3f63a68a0.jpg?source=8673f162',
         author: '某某2'
       },
       {
         id: 3,
         title: 'demo-text-3',
+        src: 'https://pic2.zhimg.com/v2-e8cce10b0d2984ccd8138b6bbe116fe7.jpg?source=8673f162',
         author: '某某3'
       }
     ],
