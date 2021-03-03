@@ -42,14 +42,14 @@ Page({
       }
     ]
   },
+  onLoad() {
+    this.getDate()
+  },
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
       url: '../logs/logs'
     })
-  },
-  onLoad() {
-    this.getDate()
   },
   getDate() {
     const now = new Date()
@@ -62,10 +62,7 @@ Page({
     if (event.currentTarget.dataset.item) {
       let item = event.currentTarget.dataset.item
       wx.navigateTo({
-        url: `/pages/detail/detail`,
-        urlParams: {
-          id: item.id
-        }
+        url: `/pages/detail/detail?id=${item.id}`
       })
     }
   },
@@ -73,10 +70,7 @@ Page({
     if (event.currentTarget.dataset.item) {
       let item = event.currentTarget.dataset.item
       wx.navigateTo({
-        url: `/pages/detail/detail`,
-        urlParams: {
-          id: item.id
-        }
+        url: `/pages/detail/detail?id=${item.id}`
       })
     }
   }

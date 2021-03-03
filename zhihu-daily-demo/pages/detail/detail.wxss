@@ -1,10 +1,12 @@
 page {
-  height: 100%;
+  box-sizing: border-box;
+  height: auto;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .container {
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 
@@ -37,6 +39,15 @@ page {
   margin: 20px;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.315);
+}
+
+.article-container {
+  box-sizing: border-box;
+  height: auto;
+  padding: 0 20px;
+  margin-bottom: 50px;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 .menu {
