@@ -1,14 +1,14 @@
 <view class="container">
-  <view class="title-container" style="background-image: url('https://pic2.zhimg.com/v2-0ac657a48101128472afbbffd545b1a6.jpg?source=8673f162')">
+  <view class="title-container" style="background-image: url('{{detail.image}}'); background-size: 100% 100%">
     <view class="title">
       {{detail.title}}
     </view>
   </view>
   <view class="author">
-    <text>作者 / {{detail.author}}</text>
+    <text>作者 / {{hint}}</text>
   </view>
   <view class="article-container">
-    {{detail.content}}
+    <rich-text nodes="{{detail.body}}"></rich-text>
   </view>
   <view class="menu">
     <view class="back" bindtap="return">返回</view>

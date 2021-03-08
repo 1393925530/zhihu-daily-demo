@@ -2,32 +2,16 @@
 // 获取应用实例
 const app = getApp()
 var utils = require('../../utils/util.js')
+import API from '../../utils/api.js'
+import { wxRequest } from '../../utils/wx-request.js'
 
 Page({
   data: {
     day: '',
     month: '',
+    title: '',
     src: 'https://pic3.zhimg.com/v2-b266a722d8428e1042e785a61ce3f4a9_xl.jpg',
-    background: [
-      {
-        id: 1,
-        title: 'demo-text-1',
-        src: 'https://pic3.zhimg.com/v2-9d2c56565ccc2ea219fcc14379ba97ff.jpg?source=8673f162',
-        author: '某某1'
-      },
-      {
-        id: 2,
-        title: 'demo-text-2',
-        src: 'https://pic1.zhimg.com/v2-08a554be129bbb95a51250e3f63a68a0.jpg?source=8673f162',
-        author: '某某2'
-      },
-      {
-        id: 3,
-        title: 'demo-text-3',
-        src: 'https://pic2.zhimg.com/v2-e8cce10b0d2984ccd8138b6bbe116fe7.jpg?source=8673f162',
-        author: '某某3'
-      }
-    ],
+    background: [],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -43,7 +27,8 @@ Page({
     ]
   },
   onLoad() {
-    this.getDate()
+    this.getTitle()
+    this.getSwiper()
   },
   // 事件处理函数
   bindViewTap() {
@@ -51,18 +36,32 @@ Page({
       url: '../logs/logs'
     })
   },
-  getDate() {
+  getTitle() {
     const now = new Date()
     this.setData({
       day: now.getDate(),
-      month: utils.translateNumber(now.getMonth() + 1) + '月'
+      month: utils.translateNumber(now.getMonth() + 1) + '月',
+      title: now.getHours() + 1 > 23 ? '早点休息' : '知乎日报'
+    })
+  },
+  getSwiper() {
+    const that = this
+    // 获取请求api
+    const url = API.LATEST_ARTICLE
+    wxRequest(url).then(rs => {
+      if (rs) {
+        that.setData({
+          background: rs.stories
+        })
+      }
+    }).catch(res => {
     })
   },
   clickSwiper(event) {
     if (event.currentTarget.dataset.item) {
       let item = event.currentTarget.dataset.item
       wx.navigateTo({
-        url: `/pages/detail/detail?id=${item.id}`
+        url: `/pages/detail/detail?id=${item.id}&&hint=${item.hint}`
       })
     }
   },

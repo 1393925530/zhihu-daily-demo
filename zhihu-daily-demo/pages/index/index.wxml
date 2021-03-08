@@ -5,7 +5,7 @@
       <text class="title-day">{{day}}</text>
       <text class="title-month">{{month}}</text>
     </text>
-    <text class="title-logo">知乎日报</text>
+    <text class="title-logo">{{title}}</text>
     <image class="user-logo" mode="{{item.mode}}" src="{{src}}"></image>
   </view>
   <view class="main-container">
@@ -13,10 +13,10 @@
       <swiper class="swiper" indicator-dots="{{indicatorDots}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{background}}" wx:key="id">
-          <swiper-item bindtap="clickSwiper" data-item="{{item}}" style="background-image: url('{{item.src}}')">
+          <swiper-item bindtap="clickSwiper" data-item="{{item}}" style="background-image: url('{{item.images[0]}}'); background-size: 100% 100%">
             <view class="swiper-item">
               <view class="swiper-item-title">{{item.title}}</view>
-              <view class="swiper-item-author">作者 / {{item.author}}</view>
+              <view class="swiper-item-author">作者 / {{item.hint}}</view>
             </view>
           </swiper-item>
         </block>
