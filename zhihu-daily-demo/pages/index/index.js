@@ -17,14 +17,7 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 800,
-    listArr: [
-      {
-        id: '11',
-        title: '为什么足球被称为世界第一运动？',
-        author: '宋世宁 4分钟阅读',
-        src: 'https://pic2.zhimg.com/v2-0ac657a48101128472afbbffd545b1a6.jpg?source=8673f162'
-      }
-    ]
+    listArr: []
   },
   onLoad() {
     this.getTitle()
@@ -51,7 +44,8 @@ Page({
     wxRequest(url).then(rs => {
       if (rs) {
         that.setData({
-          background: rs.stories
+          background: rs.top_stories,
+          listArr: rs.stories
         })
       }
     }).catch(res => {
@@ -72,5 +66,8 @@ Page({
         url: `/pages/detail/detail?id=${item.id}`
       })
     }
+  },
+  lower(e) {
+    console.log(e)
   }
 })

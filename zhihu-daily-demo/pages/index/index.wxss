@@ -1,6 +1,6 @@
 /**index.wxss**/
 page {
-  height: cals(100% - 45px);
+  height: calc(100% - 45px);
   width: 100%;
 }
 .container {
@@ -57,7 +57,6 @@ page {
 
 .main-container {
   height: calc(100% - 45px);
-  overflow-y: scroll;
   margin-top: 45px;
 }
 

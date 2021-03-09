@@ -8,22 +8,26 @@
     <text class="title-logo">{{title}}</text>
     <image class="user-logo" mode="{{item.mode}}" src="{{src}}"></image>
   </view>
-  <view class="main-container">
-    <view class="swiper-container">
-      <swiper class="swiper" indicator-dots="{{indicatorDots}}"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{background}}" wx:key="id">
-          <swiper-item bindtap="clickSwiper" data-item="{{item}}" style="background-image: url('{{item.images[0]}}'); background-size: 100% 100%">
-            <view class="swiper-item">
-              <view class="swiper-item-title">{{item.title}}</view>
-              <view class="swiper-item-author">作者 / {{item.hint}}</view>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
+  <scroll-view scroll-y="true" style="height: calc(100% + 45px)" bindscrolltolower="lower">
+    <view class="main-container">
+      <view class="swiper-container">
+        <swiper class="swiper" indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{background}}" wx:key="id">
+            <swiper-item bindtap="clickSwiper" data-item="{{item}}" style="background-image: url('{{item.image}}'); background-size: 100% 100%">
+              <view class="swiper-item">
+                <view class="swiper-item-title">{{item.title}}</view>
+                <view class="swiper-item-author">{{item.hint}}</view>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="list-container">
+        <view wx:for="{{listArr}}" wx:key="id" wx:for-index="idx">
+          <list data-item="{{listArr[idx]}}" content="{{listArr[idx]}}" bind:click="clickList"></list>
+        </view>
+      </view>
     </view>
-    <view class="list-container">
-      <list data-item="{{listArr[0]}}" content="{{listArr[0]}}" bind:click="clickList"></list>
-    </view>
-  </view>
+  </scroll-view>
 </view>
