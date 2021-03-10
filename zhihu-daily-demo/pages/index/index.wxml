@@ -24,8 +24,11 @@
         </swiper>
       </view>
       <view class="list-container">
-        <view wx:for="{{listArr}}" wx:key="id" wx:for-index="idx">
-          <list data-item="{{listArr[idx]}}" content="{{listArr[idx]}}" bind:click="clickList"></list>
+        <view wx:for="{{listArr}}" wx:key="date" wx:for-index="idx">
+          <text class="date" wx:if="{{idx !== 0}}">{{listArr[idx].date}}</text>
+          <view wx:for="{{listArr[idx].list}}" wx:key="id" wx:for-index="index">
+            <list data-item="{{listArr[idx].list[index]}}" content="{{listArr[idx].list[index]}}" bind:click="clickList"></list>
+          </view>
         </view>
       </view>
     </view>

@@ -39,13 +39,22 @@ Page({
   },
   getSwiper() {
     const that = this
+    const now = new Date()
     // 获取请求api
     const url = API.LATEST_ARTICLE
     wxRequest(url).then(rs => {
       if (rs) {
+        let firstArr = []
+        let dateProp = (now.getMonth() + 1) + '月' + now.getDate() + '日'
+        let firstObj = {
+          date: dateProp,
+          list: rs.stories,
+          formatData: now
+        }
+        firstArr.push(firstObj)
         that.setData({
           background: rs.top_stories,
-          listArr: rs.stories
+          listArr: firstArr
         })
       }
     }).catch(res => {
@@ -68,6 +77,29 @@ Page({
     }
   },
   lower(e) {
-    console.log(e)
+    let currentList = Object.assign(this.data.listArr)
+    let today = currentList[currentList.length - 1].formatData
+    let yerstoday = new Date(today).getTime() - 24 * 60 * 60 * 1000
+    const yerstodayDate = new Date(yerstoday)
+    const dateParam = yerstodayDate.getFullYear() + (yerstodayDate.getMonth() + 1 > 10 ? yerstodayDate.getMonth() + 1 : '0' + (yerstodayDate.getMonth() + 1)) + (yerstodayDate.getDate() + 1 > 10 ? yerstodayDate.getDate() : '0' + yerstodayDate.getDate()) + ''
+    const that = this
+    // 获取请求api
+    const url = API.PAST_ARTICLE + dateParam
+    wxRequest(url).then(rs => {
+      if (rs) {
+        let firstArr = Object.assign(that.data.listArr)
+        let dateProp = (yerstodayDate.getMonth() + 1) + '月' + yerstodayDate.getDate() + '日'
+        let firstObj = {
+          date: dateProp,
+          list: rs.stories,
+          formatData: new Date(yerstoday)
+        }
+        firstArr.push(firstObj)
+        that.setData({
+          listArr: firstArr
+        })
+      }
+    }).catch(res => {
+    })
   }
 })
