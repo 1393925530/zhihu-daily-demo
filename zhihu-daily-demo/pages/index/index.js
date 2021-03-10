@@ -63,7 +63,7 @@ Page({
     if (event.currentTarget.dataset.item) {
       let item = event.currentTarget.dataset.item
       wx.navigateTo({
-        url: `/pages/detail/detail?id=${item.id}`
+        url: `/pages/detail/detail?id=${item.id}&&hint=作者 / ${item.hint}`
       })
     }
   },

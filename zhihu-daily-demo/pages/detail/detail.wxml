@@ -5,12 +5,18 @@
     </view>
   </view>
   <view class="author">
-    <text>作者 / {{hint}}</text>
+    <text>{{hint}}</text>
   </view>
   <view class="article-container">
     <rich-text nodes="{{detail.body}}"></rich-text>
   </view>
   <view class="menu">
-    <view class="back" bindtap="return">返回</view>
+    <view class="back iconfont iconarrow-left-bold" bindtap="return"></view>
+    <view class="func-button-container">
+      <view class="func-button iconfont iconcomment"></view>
+      <view class="func-button iconfont icongood"></view>
+      <view class="func-button iconfont iconfavorite"></view>
+      <view class="func-button iconfont iconupload"></view>
+    </view>
   </view>
 </view>
